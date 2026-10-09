@@ -1,0 +1,14 @@
+# Java compiled files
+*.class
+
+# Temporary verification build files
+scripts/classes/
+
+# Local SQLite database
+fraud_detection.db
+fraud_detection.db-shm
+fraud_detection.db-wal
+
+# IDE settings
+.idea/
+.vscode/
