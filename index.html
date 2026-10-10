@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered Fraud Detection</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <section class="card form-card">
+      <h1>AI-Powered Fraud Detection</h1>
+      <p class="subtitle">
+        Analyze a transaction, identify risk indicators, and see the result.
+      </p>
+
+      <form id="fraud-form">
+        <div class="form-grid">
+          <label>Transaction Amount (₹)
+            <input id="amount" type="number" min="0.01"
+              step="0.01" value="75000" required>
+          </label>
+
+          <label>Transaction Hour (0–23)
+            <input id="hour" type="number" min="0"
+              max="23" value="23" required>
+          </label>
+
+          <label>Failed Login Attempts
+            <input id="failed" type="number" min="0"
+              value="4" required>
+          </label>
+
+          <label>Distance from Usual Location (km)
+            <input id="distance" type="number" min="0"
+              value="800" required>
+          </label>
+
+          <label>Is this a new device?
+            <select id="device">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+
+          <label>Is this a new location?
+            <select id="location">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+
+          <label class="full">Is this an international transaction?
+            <select id="international">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+        </div>
+
+        <button type="submit">Analyze Transaction</button>
+        <p class="note">
+          Demo scoring rules are used until the backend API is connected.
+        </p>
+      </form>
+    </section>
+
+    <section class="card result-card" id="result" hidden>
+      <h2>Fraud Detection Result</h2>
+      <h3>Risk Score: <span id="score">0</span>/90</h3>
+      <p>Risk Level: <strong id="level">LOW</strong></p>
+      <p>Recommended action: <strong id="action">ALLOW TRANSACTION</strong></p>
+      <p id="indicators">Risk indicators will appear here.</p>
+      <p class="saved-message">Demo transaction processed successfully.</p>
+
+      <h2>Recent Transaction History</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Amount</th>
+              <th>Score</th>
+              <th>Risk</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="history"></tbody>
+        </table>
+      </div>
+
+      <button id="reset" type="button" class="secondary">
+        Check Another Transaction
+      </button>
+    </section>
+
+    <footer>AI-Powered Fraud Detection System</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
